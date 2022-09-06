@@ -1,12 +1,12 @@
-import React, {useRef} from 'react';
-import {StyleSheet, View, Animated, Button, Text, Easing} from 'react-native';
+import React from 'react';
+import {StyleSheet, View, Animated, Button, Text} from 'react-native';
 
 import {colors} from '../constants/colors';
-import { useAnimation } from '../hooks/useAnimation';
+import {useAnimation} from '../hooks/useAnimation';
 
 export const Animation101Screen = () => {
-
-  const { fadeIn, fadeOut, opacity, position, startMovingPosition } = useAnimation()
+  const {fadeIn, fadeOut, opacity, position, startMovingPosition} =
+    useAnimation();
 
   return (
     <View style={styles.container}>
@@ -16,18 +16,18 @@ export const Animation101Screen = () => {
           opacity,
           transform: [
             {
-              translateX: position,
+              translateY: position,
             },
           ],
         }}
       />
 
-      <Button 
-        title="FadeIn" 
-        onPress={ () => {
-          fadeIn()
-          startMovingPosition( 150, 600 )
-        }} 
+      <Button
+        title="FadeIn"
+        onPress={() => {
+          fadeIn();
+          startMovingPosition(-200, 600);
+        }}
       />
 
       <Text />

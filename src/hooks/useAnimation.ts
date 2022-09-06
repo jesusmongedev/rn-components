@@ -22,7 +22,7 @@ export const useAnimation = () => {
             toValue: 0,
             duration,
             useNativeDriver: true,
-            // easing: Easing.bounce ,
+            easing: Easing.bounce ,
         }).start();
 
     }
@@ -40,6 +40,6 @@ export const useAnimation = () => {
         position,
         fadeIn,
         fadeOut,
-        startMovingPosition
+        startMovingPosition,
     }
 }

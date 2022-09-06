@@ -1,38 +1,16 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 
 import {styles} from '../../theme/appTheme';
-import { MenuItemInterface } from '../../types/app.types';
-import { FlatListMenuItem } from '../../components/FlatListMenuItem';
-import { RootStackParams } from '../Navigator/StackNavigator';
-import { StackScreenProps } from '@react-navigation/stack';
+import {FlatListMenuItem} from '../../components/FlatListMenuItem';
+import {RootStackParams} from '../Navigator/StackNavigator';
+import {StackScreenProps} from '@react-navigation/stack';
+import {menuItems} from '../../data/menuItems';
+import {ScreenHeader} from '../../components/ScreenHeader';
 
+interface StackProps extends StackScreenProps<RootStackParams, any> {}
 
-const menuItems: MenuItemInterface[] = [
-  {
-    name: 'Animation101',
-    icon: 'view-in-ar',
-    component: 'Animation101Screen',
-  },
-  {
-    name: 'Animation102',
-    icon: 'animation',
-    component: 'Animation102Screen',
-  },
-];
-
-interface StackProps extends StackScreenProps<RootStackParams, any>{}
-
-export const HomeScreen = ( { navigation }: StackProps ) => {
-
-  const renderListHeader = () => {
-    return (
-      <View style={{ marginBottom: 10 }}>
-        <Text style={styles.title}>Menu Options</Text>
-      </View>
-    );
-  };
-
+export const HomeScreen = ({navigation}: StackProps) => {
   const itemSeparator = () => (
     <View
       style={{
@@ -47,9 +25,11 @@ export const HomeScreen = ( { navigation }: StackProps ) => {
     <View style={{flex: 1, ...styles.globalContainer}}>
       <FlatList
         data={menuItems}
-        renderItem={({item}) => <FlatListMenuItem menuItem={item} navigation={navigation} /> }
+        renderItem={({item}) => (
+          <FlatListMenuItem menuItem={item} navigation={navigation} />
+        )}
         keyExtractor={item => item.name}
-        ListHeaderComponent={renderListHeader}
+        ListHeaderComponent={() => <ScreenHeader title="Menu Options" />}
         ItemSeparatorComponent={itemSeparator}
       />
     </View>
