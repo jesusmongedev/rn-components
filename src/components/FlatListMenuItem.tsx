@@ -12,17 +12,19 @@ interface Props {
   navigation: StackNavigationProp<RootStackParams, any, undefined>;
 }
 
-type Routes = "Animation101Screen" | "Animation102Screen" 
+type Routes = 'Animation101Screen' | 'Animation102Screen';
 
-export const FlatListMenuItem = ({menuItem, navigation: { navigate }}: Props) => {
-  const { icon, name, component } = menuItem;
+export const FlatListMenuItem = ({menuItem, navigation: {navigate}}: Props) => {
+  const {icon, name, component} = menuItem;
 
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={ () => navigate(component as Routes) }>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => navigate(component as Routes)}>
       <View style={styles.container}>
-        <Icon name={icon} size={18} color={colors.gray} />
+        <Icon name={icon} size={20} color={colors.primary} />
         <Text style={styles.itemText}>{name}</Text>
-        <Icon name="arrow-forward-ios" size={15} color={colors.gray} />
+        <Icon name="arrow-forward-ios" size={18} color={colors.primary} />
       </View>
     </TouchableOpacity>
   );
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
   itemText: {
     color: colors.black,
     marginLeft: 8,
-    fontSize: 18,
+    fontSize: 20,
     flex: 1,
   },
 });

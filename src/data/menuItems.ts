@@ -14,6 +14,11 @@ export const menuItems: MenuItemInterface[] = [
   {
     name: 'Switches',
     icon: 'toggle-on',
-    component: 'SwitchesScreen',
+    component: 'SwitchScreen',
+  },
+  {
+    name: 'Alerts',
+    icon: 'info',
+    component: 'AlertScreen',
   },
 ];
