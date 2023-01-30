@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../constants/colors';
+import { StyleSheet } from 'react-native';
+import { colors } from '../constants/colors';
 
 export const styles = StyleSheet.create({
   globalContainer: {
@@ -9,5 +9,18 @@ export const styles = StyleSheet.create({
     color: colors.black,
     fontSize: 24,
     fontWeight: 'bold',
+  },
+  //Switch
+  switchText: {
+    fontSize: 25,
+  },
+  switchRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 4,
+  },
+  spacing: {
+    marginTop: 12,
   },
 });

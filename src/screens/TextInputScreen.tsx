@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Button,
   KeyboardAvoidingView,
@@ -7,29 +7,23 @@ import {
   StyleSheet,
   TextInput,
   View,
+  Text,
 } from 'react-native';
 import {styles} from '../theme/appTheme';
 import {ScreenHeader} from '../components/ScreenHeader';
+import {useForm} from '../hooks/useForm';
+import {CustomSwith} from '../components/CustomSwith';
 
-interface formState {
-  name: string;
-  email: string;
-  phone: string;
-}
+const initState = {
+  name: '',
+  email: '',
+  phone: '',
+  isSuscribed: false,
+};
 
 export const TextInputScreen = () => {
-  const [form, setForm] = useState<formState>({
-    name: '',
-    email: '',
-    phone: '',
-  });
-
-  const handleChange = (value: string, field: keyof formState) => {
-    setForm({
-      ...form,
-      [field]: value,
-    });
-  };
+  const {formState, onChange, email, isSuscribed, name, phone} =
+    useForm(initState);
 
   return (
     <KeyboardAvoidingView
@@ -40,35 +34,43 @@ export const TextInputScreen = () => {
         <View style={styles.globalContainer}>
           <ScreenHeader title="TextInputs" />
           <TextInput
-            value={form.name}
+            value={name}
             style={stylesScreen.inputStyle}
             placeholder="Ingrese su nombre"
             autoCorrect={false}
             autoComplete="name"
-            onChangeText={value => handleChange(value, 'name')}
+            onChangeText={value => onChange(value, 'name')}
           />
           <TextInput
-            value={form.email}
+            value={email}
             style={stylesScreen.inputStyle}
             placeholder="Ingrese su correo"
             autoComplete="email"
             autoCapitalize="none"
-            onChangeText={value => handleChange(value, 'email')}
+            onChangeText={value => onChange(value, 'email')}
           />
-          <ScreenHeader title={JSON.stringify(form, null, 3)} />
-          <ScreenHeader title={JSON.stringify(form, null, 3)} />
+          {/* isActive */}
+          <View style={styles.switchRow}>
+            <Text style={styles.switchText}>Subscribe</Text>
+            <CustomSwith
+              isOn={isSuscribed}
+              onChange={value => onChange(value, 'isSuscribed')}
+            />
+          </View>
+          <ScreenHeader title={JSON.stringify(formState, null, 3)} />
+          <ScreenHeader title={JSON.stringify(formState, null, 3)} />
           <TextInput
             keyboardType="numeric"
-            value={form.phone}
+            value={phone}
             style={stylesScreen.inputStyle}
             placeholder="Ingrese su número celular"
-            onChangeText={value => handleChange(value, 'phone')}
+            onChangeText={value => onChange(value, 'phone')}
           />
-          <View style={{height: 20}} />
           <View style={stylesScreen.btnContainer}>
             <Button title="Submit" onPress={() => null} />
           </View>
         </View>
+        <View style={{height: 20}} />
       </ScrollView>
     </KeyboardAvoidingView>
   );
