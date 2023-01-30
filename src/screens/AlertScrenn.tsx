@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, View, Button, Text} from 'react-native';
+import {Alert, View, Button} from 'react-native';
 import {ScreenHeader} from '../components/ScreenHeader';
 import {styles} from '../theme/appTheme';
 
@@ -38,7 +38,7 @@ export const AlertScreen = () => {
         },
         {text: 'OK', onPress: () => console.log('OK Pressed')},
       ],
-      {cancelable: false},
+      {cancelable: true},
     );
   };
 
@@ -46,7 +46,7 @@ export const AlertScreen = () => {
     <View style={styles.globalContainer}>
       <ScreenHeader title="Alerts" />
       <Button title="2-Button Alert" onPress={createTwoButtonAlert} />
-      <Text></Text>
+      <View style={{marginVertical: 8}} />
       <Button title="3-Button Alert" onPress={createThreeButtonAlert} />
     </View>
   );
