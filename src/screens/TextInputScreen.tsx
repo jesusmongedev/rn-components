@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  Button,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -32,7 +33,9 @@ export const TextInputScreen = () => {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'android' ? 'height' : 'padding'}>
+      behavior={Platform.OS === 'android' ? 'height' : 'padding'}
+      // style={stylesScreen.container}
+    >
       <ScrollView>
         <View style={styles.globalContainer}>
           <ScreenHeader title="TextInputs" />
@@ -61,14 +64,24 @@ export const TextInputScreen = () => {
             placeholder="Ingrese su número celular"
             onChangeText={value => handleChange(value, 'phone')}
           />
+          <View style={{height: 20}} />
+          <View style={stylesScreen.btnContainer}>
+            <Button title="Submit" onPress={() => null} />
+          </View>
         </View>
-        <View style={{height: 20}} />
       </ScrollView>
     </KeyboardAvoidingView>
   );
 };
 
 const stylesScreen = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  inner: {
+    flex: 1,
+    justifyContent: 'space-around',
+  },
   inputStyle: {
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.3)',
@@ -76,5 +89,8 @@ const stylesScreen = StyleSheet.create({
     paddingHorizontal: 20,
     fontSize: 18,
     marginVertical: 10,
+  },
+  btnContainer: {
+    marginTop: 12,
   },
 });
