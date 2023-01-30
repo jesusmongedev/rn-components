@@ -1,5 +1,6 @@
 import React from 'react';
 import {Alert, View, Button, Text} from 'react-native';
+import prompt from 'react-native-prompt-android';
 import {ScreenHeader} from '../components/ScreenHeader';
 import {styles} from '../theme/appTheme';
 
@@ -42,12 +43,31 @@ export const AlertScreen = () => {
     );
   };
 
+  const showPrompt = () => {
+    prompt(
+      'Enter password',
+      'Enter your password to claim your $1.5B in lottery winnings',
+      [
+       {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+       {text: 'OK', onPress: password => console.log('OK Pressed, password: ' + password)},
+      ],
+      {
+          type: 'secure-text',
+          cancelable: false,
+          defaultValue: 'test',
+          placeholder: 'placeholder'
+      }
+  );
+  };
+
   return (
     <View style={styles.globalContainer}>
       <ScreenHeader title="Alerts" />
       <Button title="2-Button Alert" onPress={createTwoButtonAlert} />
       <Text></Text>
       <Button title="3-Button Alert" onPress={createThreeButtonAlert} />
+      <Text></Text>
+      <Button title="Show Prompt" onPress={showPrompt} />
     </View>
   );
 };
