@@ -21,4 +21,9 @@ export const menuItems: MenuItemInterface[] = [
     icon: 'info',
     component: 'AlertScreen',
   },
+  {
+    name: 'TextInputs',
+    icon: 'list-alt',
+    component: 'TextInputScreen',
+  },
 ];
