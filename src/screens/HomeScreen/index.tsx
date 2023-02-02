@@ -1,10 +1,10 @@
 import React from 'react';
 import {FlatList, View} from 'react-native';
+import {StackScreenProps} from '@react-navigation/stack';
 
 import {styles} from '../../theme/appTheme';
 import {FlatListMenuItem} from '../../components/FlatListMenuItem';
 import {RootStackParams} from '../Navigator/StackNavigator';
-import {StackScreenProps} from '@react-navigation/stack';
 import {menuItems} from '../../data/menuItems';
 import {ScreenHeader} from '../../components/ScreenHeader';
 

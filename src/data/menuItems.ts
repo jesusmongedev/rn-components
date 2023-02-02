@@ -1,4 +1,4 @@
-import {MenuItemInterface} from '../types/app.types';
+import { MenuItemInterface } from '../types/app.types';
 
 export const menuItems: MenuItemInterface[] = [
   {
@@ -26,4 +26,9 @@ export const menuItems: MenuItemInterface[] = [
     icon: 'list-alt',
     component: 'TextInputScreen',
   },
+  {
+    name: 'Pull to Refresh',
+    icon: 'refresh',
+    component: 'PullToRefreshScreen'
+  }
 ];
