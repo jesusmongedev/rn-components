@@ -14,7 +14,7 @@ export const HomeScreen = ({navigation}: StackProps) => {
   const itemSeparator = () => (
     <View
       style={{
-        marginVertical: 6,
+        marginVertical: 8,
         borderBottomWidth: 1,
         opacity: 0.45,
       }}
