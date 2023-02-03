@@ -7,19 +7,11 @@ import {FlatListMenuItem} from '../../components/FlatListMenuItem';
 import {RootStackParams} from '../Navigator/StackNavigator';
 import {menuItems} from '../../data/menuItems';
 import {ScreenHeader} from '../../components/ScreenHeader';
+import { ItemSeparator } from '../../components/ItemSeparator';
 
 interface StackProps extends StackScreenProps<RootStackParams, any> {}
 
 export const HomeScreen = ({navigation}: StackProps) => {
-  const itemSeparator = () => (
-    <View
-      style={{
-        marginVertical: 8,
-        borderBottomWidth: 1,
-        opacity: 0.45,
-      }}
-    />
-  );
 
   return (
     <View style={{flex: 1, ...styles.globalContainer}}>
@@ -30,7 +22,7 @@ export const HomeScreen = ({navigation}: StackProps) => {
         )}
         keyExtractor={item => item.name}
         ListHeaderComponent={() => <ScreenHeader title="Menu Options" />}
-        ItemSeparatorComponent={itemSeparator}
+        ItemSeparatorComponent={() => <ItemSeparator/>}
       />
     </View>
   );
