@@ -10,14 +10,25 @@ import {styles} from '../theme/appTheme';
 export const SectionListScreen = () => {
   return (
     <View style={{flex: 1, ...styles.globalContainer}}>
-      <SectionList
-        sections={casas}
-        keyExtractor={(item, index) => item + index}
-        renderSectionHeader={({section: {casa}}) => (
-          <ScreenHeader title={casa} />
-        )}
-        renderItem={({section: {data}}) => <Text>{data}</Text>}
-      />
+      
+          <SectionList
+            sections={casas}
+            keyExtractor={ (item, index) => item + index }
+            ListHeaderComponent={() => <ScreenHeader title="Section List Screen" />}
+            ListFooterComponent={() => <ScreenHeader title='Footer' />}
+
+            renderSectionHeader={({section: {casa}}) => (
+              <View style={{ backgroundColor: 'white' }}>
+                <ScreenHeader title={casa} />
+              </View>
+            )}
+            renderItem={({ item }) => <Text>{item}</Text>}
+            renderSectionFooter={({section: {casa}}) => (
+              <ScreenHeader title={`Total: ${casa.length}`} />
+            )}
+
+            stickySectionHeadersEnabled
+          />
     </View>
   );
 };
